@@ -1,0 +1,164 @@
+/* Mobile-first layout */
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+  color: var(--text-button);
+}
+
+.header p {
+  margin: 0;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Main container - Mobile first */
+.cv-container {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cv-editor {
+  width: 100%;
+}
+
+/* Tablet - 768px */
+@media (min-width: 768px) {
+  #root {
+    padding: 1.5rem;
+  }
+
+  .header {
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .header h2 {
+    font-size: 2rem;
+  }
+
+  .cv-container {
+    gap: 1.5rem;
+  }
+}
+
+/* Desktop - 1024px */
+@media (min-width: 1024px) {
+  #root {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .cv-container {
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .cv-editor {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  .cv-preview {
+    flex: 1;
+    max-width: 50%;
+    margin-top: 0;
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+}
+
+.download-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  color: var(--text-button);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.download-btn:hover {
+  opacity: 0.9;
+}
+
+.download-btn .icon {
+  width: 1.2em;
+  color: var(--text-button);
+  height: 1.2em;
+}
+
+/* Footer */
+.footer {
+  padding: 2rem 0 1rem 0;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--bg-secondary);
+}
+
+.footer-link {
+  color: var(--link-color);
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}
+
+.icon {
+  color: white;
+}
+
+.footer-link .icon {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+  #root {
+    padding: 0.75rem;
+  }
+
+  .header h2 {
+    font-size: 1.5rem;
+  }
+
+  .cv-preview {
+    padding: 0.75rem;
+  }
+}
