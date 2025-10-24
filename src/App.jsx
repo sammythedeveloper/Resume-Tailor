@@ -118,13 +118,15 @@ function App() {
           </AccordionSection>
 
           {/* Summary */}
-          <AccordionSection icon="summary" title="Summary" defaultOpen={true}>
+          <AccordionSection icon="summary" title="Summary">
             <Summary
-              data={data}
-              onChange={(newData) => handleSectionUpdate("summary", newData)}
+              data={data.summary}
+              onChange={(newSummary) =>
+                handleSectionUpdate("summary", newSummary)
+              }
             />
           </AccordionSection>
-          
+
           {/* Education */}
           <AccordionSection icon="education" title="Education">
             <ExperienceSection

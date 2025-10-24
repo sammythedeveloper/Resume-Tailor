@@ -1,27 +1,19 @@
-import './summary.css';
-
+import "./Summary.css";
 export function Summary({ data, onChange }) {
-  const handleInputChange = (e) => {
-    const { value } = e.target;
-    onChange({
-      ...data,
-      summary: value,
-    });
+  const handleChange = (e) => {
+    onChange(e.target.value);
   };
 
   return (
-    <form className="summary-form">
-      <div className="form-group">
-        <label htmlFor="summary">Professional Summary</label>
-        <textarea
-          id="summary"
-          name="summary"
-          value={data.summary || ''}
-          onChange={handleInputChange}
-          placeholder="Write a short summary about yourself..."
-          rows={4}
-        />
-      </div>
-    </form>
+    <div className="summary-section">
+      <label htmlFor="summary">Summary</label>
+      <textarea
+        id="summary"
+        placeholder="Write a brief summary about yourself (200 words max)"
+        value={data || ''}
+        onChange={handleChange}
+        rows="6"
+      />
+    </div>
   );
 }

@@ -1,11 +1,11 @@
-import './ResumePreview.css';
+import "./ResumePreview.css";
 
 export function ResumePreview({ data }) {
   const renderDescriptionList = (description) => {
-    if (!description || description.trim() === '') return null;
+    if (!description || description.trim() === "") return null;
 
     const items = description
-      .split('\n')
+      .split("\n")
       .map((line) => line.trim())
       .filter((line) => line.length > 0);
 
@@ -21,20 +21,26 @@ export function ResumePreview({ data }) {
   };
 
   const renderTechnologies = (technologies) => {
-    if (!technologies || technologies.trim() === '') return null;
+    if (!technologies || technologies.trim() === "") return null;
 
     const techList = technologies
-      .split(',')
+      .split(",")
       .map((tech) => tech.trim())
       .filter((tech) => tech.length > 0);
 
     if (techList.length === 0) return null;
 
-    return techList.join(' | ');
+    return techList.join(" | ");
   };
 
-  const { personalInfo, education, workExperience, projects, technicalSkills } =
-    data;
+  const {
+    personalInfo,
+    summary,
+    education,
+    workExperience,
+    projects,
+    technicalSkills,
+  } = data;
 
   return (
     <div className="resume">
@@ -96,35 +102,27 @@ export function ResumePreview({ data }) {
           )}
         </div>
       </header>
+      {/* Summary */}
+      {/* Summary Section */}
+      {summary && typeof summary === "string" && summary.trim() !== "" && (
+        <section className="resume-section">
+          <h2 className="section-title">Summary</h2>
+          <p className="section-content">{summary}</p>
+        </section>
+      )}
 
-      {/* Education */}
-      {education.length > 0 &&
-        education.some((edu) => edu.university || edu.degree) && (
+      {/* Technical Skills */}
+      {technicalSkills.length > 0 &&
+        technicalSkills.some((skill) => skill.title || skill.skills) && (
           <section className="resume-section">
-            <h2 className="section-title">Education</h2>
+            <h2 className="section-title">Skills</h2>
             <div className="section-content">
-              {education.map((edu) => {
-                if (!edu.university && !edu.degree) return null;
+              {technicalSkills.map((skill) => {
+                if (!skill.title && !skill.skills) return null;
                 return (
-                  <div key={edu.id} className="resume-entry">
-                    <div className="entry-header">
-                      <div className="entry-left">
-                        <h3 className="entry-title">{edu.university}</h3>
-                        <p className="entry-subtitle">{edu.degree}</p>
-                      </div>
-                      <div className="entry-right">
-                        {(edu.startDate || edu.endDate) && (
-                          <p className="entry-date">
-                            {edu.startDate}{' '}
-                            {edu.startDate && edu.endDate && '–'} {edu.endDate}
-                          </p>
-                        )}{' '}
-                        {edu.location && (
-                          <p className="entry-location">{edu.location}</p>
-                        )}
-                      </div>
-                    </div>
-                    {renderDescriptionList(edu.description)}
+                  <div key={skill.id} className="skill-entry">
+                    <span className="skill-category">{skill.title}:</span>{" "}
+                    <span className="skill-list">{skill.skills}</span>
                   </div>
                 );
               })}
@@ -150,8 +148,8 @@ export function ResumePreview({ data }) {
                       <div className="entry-right">
                         {(work.startDate || work.endDate) && (
                           <p className="entry-date">
-                            {work.startDate}{' '}
-                            {work.startDate && work.endDate && '–'}{' '}
+                            {work.startDate}{" "}
+                            {work.startDate && work.endDate && "–"}{" "}
                             {work.endDate}
                           </p>
                         )}
@@ -183,7 +181,7 @@ export function ResumePreview({ data }) {
                         {proj.name}
                         {(proj.website || proj.sourceCode) && (
                           <span className="project-links">
-                            {' | '}
+                            {" | "}
                             {proj.website && (
                               <a
                                 href={proj.website}
@@ -226,19 +224,34 @@ export function ResumePreview({ data }) {
           </div>
         </section>
       )}
-
-      {/* Technical Skills */}
-      {technicalSkills.length > 0 &&
-        technicalSkills.some((skill) => skill.title || skill.skills) && (
+      {/* Education */}
+      {education.length > 0 &&
+        education.some((edu) => edu.university || edu.degree) && (
           <section className="resume-section">
-            <h2 className="section-title">Technical Skills</h2>
+            <h2 className="section-title">Education</h2>
             <div className="section-content">
-              {technicalSkills.map((skill) => {
-                if (!skill.title && !skill.skills) return null;
+              {education.map((edu) => {
+                if (!edu.university && !edu.degree) return null;
                 return (
-                  <div key={skill.id} className="skill-entry">
-                    <span className="skill-category">{skill.title}:</span>{' '}
-                    <span className="skill-list">{skill.skills}</span>
+                  <div key={edu.id} className="resume-entry">
+                    <div className="entry-header">
+                      <div className="entry-left">
+                        <h3 className="entry-title">{edu.university}</h3>
+                        <p className="entry-subtitle">{edu.degree}</p>
+                      </div>
+                      <div className="entry-right">
+                        {(edu.startDate || edu.endDate) && (
+                          <p className="entry-date">
+                            {edu.startDate}{" "}
+                            {edu.startDate && edu.endDate && "–"} {edu.endDate}
+                          </p>
+                        )}{" "}
+                        {edu.location && (
+                          <p className="entry-location">{edu.location}</p>
+                        )}
+                      </div>
+                    </div>
+                    {renderDescriptionList(edu.description)}
                   </div>
                 );
               })}

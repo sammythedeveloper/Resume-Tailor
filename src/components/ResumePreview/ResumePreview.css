@@ -164,6 +164,20 @@
   margin: 0 0.4em;
 }
 
+.resume-section .section-divider {
+  border: 0;
+  height: 1px;
+  background-color: #ccc;
+  margin: 0.25rem 0 1rem 0;
+}
+
+.summary-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--text-color);
+  margin: 0 0 1rem 0;
+}
+
 /* Technical Skills */
 .skill-entry {
   margin-bottom: 0.3em;

@@ -15,7 +15,7 @@
     resize: vertical;
     padding: 0.5rem;
     font-size: 1rem;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: var(--border-radius);
     background-color: var(--bg-secondary);
     color: var(--text-color);
