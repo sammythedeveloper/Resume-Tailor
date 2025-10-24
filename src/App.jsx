@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 import {
   AccordionSection,
   PersonalInfo,
   ExperienceSection,
   ResumePreview,
   ResumePDF,
-} from './components';
-import { defaultData } from './default-data';
+} from "./components";
+import { defaultData } from "./default-data";
 
-import { pdf } from '@react-pdf/renderer';
+import { pdf } from "@react-pdf/renderer";
 
 function App() {
   const [data, setData] = useState(defaultData);
 
-  console.log('App data state:', data);
+  console.log("App data state:", data);
 
   const handleSectionUpdate = (section, newData) => {
     setData((prevData) => ({
@@ -25,68 +25,68 @@ function App() {
   };
 
   const educationFields = [
-    { name: 'university', label: 'School', type: 'text' },
-    { name: 'degree', label: 'Course', type: 'text' },
-    { name: 'description', label: 'Description', type: 'textarea' },
-    { name: 'startDate', label: 'Start Date', type: 'text' },
-    { name: 'endDate', label: 'End Date', type: 'text' },
-    { name: 'location', label: 'Location', type: 'text' },
+    { name: "university", label: "School", type: "text" },
+    { name: "degree", label: "Course", type: "text" },
+    { name: "description", label: "Description", type: "textarea" },
+    { name: "startDate", label: "Start Date", type: "text" },
+    { name: "endDate", label: "End Date", type: "text" },
+    { name: "location", label: "Location", type: "text" },
   ];
 
   const getEducationTitle = (item) => {
-    return item.university || item.degree || 'New Education';
+    return item.university || item.degree || "New Education";
   };
 
   const workFields = [
-    { name: 'company', label: 'Company', type: 'text' },
-    { name: 'position', label: 'Position', type: 'text' },
-    { name: 'description', label: 'Description', type: 'textarea' },
-    { name: 'startDate', label: 'Start Date', type: 'text' },
-    { name: 'endDate', label: 'End Date', type: 'text' },
-    { name: 'location', label: 'Location', type: 'text' },
+    { name: "company", label: "Company", type: "text" },
+    { name: "position", label: "Position", type: "text" },
+    { name: "description", label: "Description", type: "textarea" },
+    { name: "startDate", label: "Start Date", type: "text" },
+    { name: "endDate", label: "End Date", type: "text" },
+    { name: "location", label: "Location", type: "text" },
   ];
 
   const getWorkTitle = (item) => {
-    return item.company || item.position || 'New Work Experience';
+    return item.company || item.position || "New Work Experience";
   };
 
   const projectsFields = [
-    { name: 'name', label: 'Project Name', type: 'text' },
-    { name: 'website', label: 'Website', type: 'text' },
-    { name: 'sourceCode', label: 'Source Code', type: 'text' },
-    { name: 'description', label: 'Description', type: 'textarea' },
+    { name: "name", label: "Project Name", type: "text" },
+    { name: "website", label: "Website", type: "text" },
+    { name: "sourceCode", label: "Source Code", type: "text" },
+    { name: "description", label: "Description", type: "textarea" },
     {
-      name: 'technologies',
-      label: 'Technologies (comma separated)',
-      type: 'text',
+      name: "technologies",
+      label: "Technologies (comma separated)",
+      type: "text",
     },
   ];
 
   const getProjectTitle = (item) => {
-    return item.name || 'New Project';
+    return item.name || "New Project";
   };
 
   const technicalSkillsFields = [
-    { name: 'title', label: 'Skill Title', type: 'text' },
-    { name: 'skills', label: 'Skills (comma separated)', type: 'text' },
+    { name: "title", label: "Skill Title", type: "text" },
+    { name: "skills", label: "Skills (comma separated)", type: "text" },
   ];
 
   const getTechnicalSkillsTitle = (item) => {
-    return item.title || 'New Technical Skills';
+    return item.title || "New Technical Skills";
   };
 
   const handleDownloadPDF = async () => {
     try {
       const blob = await pdf(<ResumePDF data={data} />).toBlob();
       const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
       link.download = `${data.personalInfo.firstName}_${data.personalInfo.lastName}_CV.pdf`;
       link.click();
       URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Error al generar el PDF. Por favor intenta de nuevo.');
+      console.error("Error generating PDF:", error);
+      alert("Error al generar el PDF. Por favor intenta de nuevo.");
     }
   };
 
@@ -111,7 +111,7 @@ function App() {
             <PersonalInfo
               data={data.personalInfo}
               onChange={(newData) =>
-                handleSectionUpdate('personalInfo', newData)
+                handleSectionUpdate("personalInfo", newData)
               }
             />
           </AccordionSection>
@@ -120,18 +120,18 @@ function App() {
             <ExperienceSection
               items={data.education}
               initialItemData={{
-                id: '',
-                university: '',
-                degree: '',
-                description: '',
-                startDate: '',
-                endDate: '',
-                location: '',
+                id: "",
+                university: "",
+                degree: "",
+                description: "",
+                startDate: "",
+                endDate: "",
+                location: "",
               }}
               fields={educationFields}
               sectionTitle="Education"
               onUpdateItems={(newData) =>
-                handleSectionUpdate('education', newData)
+                handleSectionUpdate("education", newData)
               }
               getTitleFromItem={getEducationTitle}
             />
@@ -141,18 +141,18 @@ function App() {
             <ExperienceSection
               items={data.workExperience}
               initialItemData={{
-                id: '',
-                company: '',
-                position: '',
-                description: '',
-                startDate: '',
-                endDate: '',
-                location: '',
+                id: "",
+                company: "",
+                position: "",
+                description: "",
+                startDate: "",
+                endDate: "",
+                location: "",
               }}
               fields={workFields}
               sectionTitle="Work Experience"
               onUpdateItems={(newData) =>
-                handleSectionUpdate('workExperience', newData)
+                handleSectionUpdate("workExperience", newData)
               }
               getTitleFromItem={getWorkTitle}
             />
@@ -162,17 +162,17 @@ function App() {
             <ExperienceSection
               items={data.projects}
               initialItemData={{
-                id: '',
-                name: '',
-                website: '',
-                sourceCode: '',
-                description: '',
-                technologies: '',
+                id: "",
+                name: "",
+                website: "",
+                sourceCode: "",
+                description: "",
+                technologies: "",
               }}
               fields={projectsFields}
               sectionTitle="Projects"
               onUpdateItems={(newData) =>
-                handleSectionUpdate('projects', newData)
+                handleSectionUpdate("projects", newData)
               }
               getTitleFromItem={getProjectTitle}
             />
@@ -182,14 +182,14 @@ function App() {
             <ExperienceSection
               items={data.technicalSkills}
               initialItemData={{
-                id: '',
-                title: '',
-                skills: '',
+                id: "",
+                title: "",
+                skills: "",
               }}
               fields={technicalSkillsFields}
               sectionTitle="Technical Skills"
               onUpdateItems={(newData) =>
-                handleSectionUpdate('technicalSkills', newData)
+                handleSectionUpdate("technicalSkills", newData)
               }
               getTitleFromItem={getTechnicalSkillsTitle}
             />
@@ -200,18 +200,18 @@ function App() {
         <div className="cv-preview">
           <ResumePreview data={data} />
           <div className="preview-size">A4 preview</div>
-          <button className="download-btn" onClick={handleDownloadPDF}>
-            <svg className="icon" aria-hidden="true">
-              <use href="#icon-download"></use>
-            </svg>
-            Download PDF
-          </button>
         </div>
       </div>
+      <button className="download-btn" onClick={handleDownloadPDF}>
+        <svg className="icon" aria-hidden="true">
+          <use href="#icon-download"></use>
+        </svg>
+        Download PDF
+      </button>
       {/* Footer */}
       <footer className="footer">
         <p>
-          &copy; 2025 Designed and developed by{' '}
+          &copy; 2025 Designed and developed by{" "}
           <a
             href="https://github.com/sammythedeveloper"
             target="_blank"
