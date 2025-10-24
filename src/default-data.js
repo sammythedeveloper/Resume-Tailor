@@ -1,12 +1,12 @@
 export const defaultData = {
   personalInfo: {
-    firstName: 'Alex',
-    lastName: 'Huaracha',
-    phone: '+51 962334712',
-    email: 'alexhuarachaq@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/alex-huaracha/',
-    github: 'https://github.com/Alex-Huaracha',
-    portfolio: 'https://portfolio-khaki-seven-93.vercel.app/',
+    firstName: 'Sam',
+    lastName: 'D.',
+    phone: '+1 3845891299',
+    email: 'samjustinit@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/sam-the-dev/',
+    github: 'https://github.com/samDev',
+    portfolio: 'https://samdev.vercel.app/',
   },
 
   education: [

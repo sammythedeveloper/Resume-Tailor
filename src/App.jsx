@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import {
   AccordionSection,
+  Summary,
   PersonalInfo,
   ExperienceSection,
   ResumePreview,
@@ -115,6 +116,15 @@ function App() {
               }
             />
           </AccordionSection>
+
+          {/* Summary */}
+          <AccordionSection icon="summary" title="Summary" defaultOpen={true}>
+            <Summary
+              data={data}
+              onChange={(newData) => handleSectionUpdate("summary", newData)}
+            />
+          </AccordionSection>
+          
           {/* Education */}
           <AccordionSection icon="education" title="Education">
             <ExperienceSection
