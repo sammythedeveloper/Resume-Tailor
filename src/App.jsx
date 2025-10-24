@@ -213,7 +213,7 @@ function App() {
         <p>
           &copy; 2025 Designed and developed by{' '}
           <a
-            href="https://github.com/Alex-Huaracha"
+            href="https://github.com/sammythedeveloper"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-link"
@@ -221,7 +221,7 @@ function App() {
             <svg className="icon" aria-hidden="true">
               <use href="#icon-github"></use>
             </svg>
-            Alex Huaracha
+            Samson Daba
           </a>
         </p>
       </footer>

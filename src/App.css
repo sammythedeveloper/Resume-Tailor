@@ -41,28 +41,44 @@
   width: 100%;
 }
 
-/* Tablet - 768px */
-@media (min-width: 768px) {
-  #root {
-    padding: 1.5rem;
-  }
-
-  .header {
-    padding: 1.5rem 0;
-    margin-bottom: 2rem;
-  }
-
-  .header h2 {
-    font-size: 2rem;
-  }
-
-  .cv-container {
-    gap: 1.5rem;
-  }
+/* CV Preview */
+.cv-preview {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-/* Desktop - 1024px */
-@media (min-width: 1024px) {
+/* Download button */
+.download-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  color: var(--text-button);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0; /* ensures it doesn’t shrink */
+}
+
+.download-btn:hover {
+  opacity: 0.9;
+}
+
+.download-btn .icon {
+  width: 1.2em;
+  color: var(--text-button);
+  height: 1.2em;
+}
+
+/* Desktop - 1364px */
+@media (min-width: 1364px) {
   #root {
     padding: 2rem;
     max-width: 1400px;
@@ -83,44 +99,24 @@
   .cv-preview {
     flex: 1;
     max-width: 50%;
-    margin-top: 0;
+    display: flex;
+    flex-direction: column;
     position: sticky;
     top: 2rem;
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
+    gap: 1rem;
   }
-}
 
-.download-btn {
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--accent-color);
-  color: var(--text-button);
-  border: none;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: opacity 0.2s ease;
-}
-
-.download-btn:hover {
-  opacity: 0.9;
-}
-
-.download-btn .icon {
-  width: 1.2em;
-  color: var(--text-button);
-  height: 1.2em;
+  .cv-preview > .download-btn {
+    margin-top: auto; /* push button to bottom */
+  }
 }
 
 /* Footer */
 .footer {
   padding: 2rem 0 1rem 0;
-  margin-top: 2rem;
+  margin-top: 4rem;
   font-size: 0.9rem;
   border-top: 1px solid var(--bg-secondary);
 }
@@ -146,19 +142,4 @@
 .footer-link .icon {
   width: 1.2em;
   height: 1.2em;
-}
-
-/* Mobile optimization */
-@media (max-width: 480px) {
-  #root {
-    padding: 0.75rem;
-  }
-
-  .header h2 {
-    font-size: 1.5rem;
-  }
-
-  .cv-preview {
-    padding: 0.75rem;
-  }
 }
